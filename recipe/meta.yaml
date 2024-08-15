@@ -1,5 +1,5 @@
 {% set name = "txl-remote-terminals" %}
-{% set version = "0.2.13" %}
+{% set version = "0.2.14" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/txl_remote_terminals-{{ version }}.tar.gz
-  sha256: c662128e10c6449e05601f0cdb9b2fc76aa1107de73a741c6ed2719dd99dd598
+  sha256: 589b37f28bdb2ca84ffb940dbc3842db7eeab51cdf6728c7f5a797ad019c894b
 
 build:
   noarch: python
@@ -21,7 +21,7 @@ requirements:
     - hatchling
   run:
     - python >=3.10
-    - txl
+    - txl >=0.2.18,<0.3.0
     - httpx >=0.23.1
     - httpx-ws >=0.4.2
 
