@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "txl-remote-terminals" %}
 {% set version = "0.2.14" %}
 
@@ -6,21 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/txl_remote_terminals-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/txl_remote_terminals-{{ version }}.tar.gz
   sha256: 589b37f28bdb2ca84ffb940dbc3842db7eeab51cdf6728c7f5a797ad019c894b
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
-    - python >=3.10
+    - python {{ python_min }}
     - pip
     - hatchling
   run:
-    - python >=3.10
+    - python >={{ python_min }}
     - txl >=0.2.18,<0.3.0
     - httpx >=0.23.1
     - httpx-ws >=0.4.2
@@ -32,6 +33,8 @@ test:
   #   - pip
   # commands:
   #   - pip check
+  requires:
+    - python {{ python_min }}
   imports:
     - txl_remote_terminals
 
