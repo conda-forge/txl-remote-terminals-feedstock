@@ -1,6 +1,6 @@
-{% set python_min = '3.10' %}
+{% set python_min = "3.10" %}
 {% set name = "txl-remote-terminals" %}
-{% set version = "0.2.14" %}
+{% set version = "0.3.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/txl_remote_terminals-{{ version }}.tar.gz
-  sha256: 589b37f28bdb2ca84ffb940dbc3842db7eeab51cdf6728c7f5a797ad019c894b
+  sha256: 207e3d98ea52ee9eec6399c8b84be3b908d08c194e61dc5fdeee57306ef45a6f
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
