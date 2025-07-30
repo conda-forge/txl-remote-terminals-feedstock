@@ -1,6 +1,6 @@
-{% set python_min = '3.10' %}
+{% set python_min = "3.10" %}
 {% set name = "txl-remote-terminals" %}
-{% set version = "0.2.14" %}
+{% set version = "0.3.6" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/txl_remote_terminals-{{ version }}.tar.gz
-  sha256: 589b37f28bdb2ca84ffb940dbc3842db7eeab51cdf6728c7f5a797ad019c894b
+  sha256: 4798311efe50c78bc67e4965e4d0667d8e7b46a037666c3dd35e09c424c0b58f
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
@@ -22,19 +22,16 @@ requirements:
     - hatchling
   run:
     - python >={{ python_min }}
-    - txl >=0.2.18,<0.3.0
+    - txl =0.3.2
     - httpx >=0.23.1
     - httpx-ws >=0.4.2
 
 test:
-  # `pip check` was disabled, see: https://github.com/conda-forge/staged-recipes/pull/26869
-  #
-  # requires:
-  #   - pip
-  # commands:
-  #   - pip check
   requires:
+    - pip
     - python {{ python_min }}
+  commands:
+    - pip check
   imports:
     - txl_remote_terminals
 
